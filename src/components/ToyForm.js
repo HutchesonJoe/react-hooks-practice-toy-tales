@@ -1,15 +1,26 @@
 import React from "react";
 
-function ToyForm() {
+function ToyForm({handleAddToy, setNewToyName, setNewToyImage}) {
+  
+
+  function handleNameInput(e){
+    setNewToyName(e.target.value)
+  }
+
+  function handleImageInput(e){
+    setNewToyImage(e.target.value)
+  }
+
   return (
     <div className="container">
-      <form className="add-toy-form">
+      <form className="add-toy-form" onSubmit={handleAddToy}>
         <h3>Create a toy!</h3>
         <input
           type="text"
           name="name"
           placeholder="Enter a toy's name..."
           className="input-text"
+          onChange={handleNameInput}
         />
         <br />
         <input
@@ -17,6 +28,7 @@ function ToyForm() {
           name="image"
           placeholder="Enter a toy's image URL..."
           className="input-text"
+          onChange={handleImageInput}
         />
         <br />
         <input
